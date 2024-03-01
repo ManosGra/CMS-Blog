@@ -3,9 +3,9 @@
 
 <?php
 if (isset($_POST['submit'])) {
-    $username = escape($_POST['username']);
-    $email = escape($_POST['email']);
-    $password = escape($_POST['password']);
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
     $password = password_hash($password, PASSWORD_BCRYPT, array('cost' =>12));
 

@@ -1,31 +1,31 @@
 <?php
 
 if (isset($_GET['edit_user'])) {
-    $the_user_id = escape($_GET['edit_user']);
+    $the_user_id = $_GET['edit_user'];
 
     $query = "SELECT * FROM users WHERE user_id = $the_user_id ";
     $select_users_query = mysqli_query($connection, $query);
 
     while ($row = mysqli_fetch_assoc($select_users_query)) {
-        $user_id = escape($row['user_id']);
-        $username = escape($row['username']);
-        $user_password = escape($row['user_password']);
-        $user_firstname = escape($row['user_firstname']);
-        $user_lastname = escape($row['user_lastname']);
-        $user_email = escape($row['user_email']);
-        $user_role = escape($row['user_role']);
+        $user_id = $row['user_id'];
+        $username = $row['username'];
+        $user_password = $row['user_password'];
+        $user_firstname = $row['user_firstname'];
+        $user_lastname = $row['user_lastname'];
+        $user_email = $row['user_email'];
+        $user_role = $row['user_role'];
     }
 
 
     if (isset($_POST['edit_user'])) {
 
-        $user_firstname = escape($_POST['user_firstname']);
-        $user_lastname = escape($_POST['user_lastname']);
-        $user_role = escape($_POST['user_role']);
-        $username = escape($_POST['username']);
-        $user_email = escape($_POST['user_email']);
-        $user_password = escape($_POST['user_password']);
-        $post_date = escape(['d-m-y']);
+        $user_firstname = $_POST['user_firstname'];
+        $user_lastname = $_POST['user_lastname'];
+        $user_role = $_POST['user_role'];
+        $username = $_POST['username'];
+        $user_email = $_POST['user_email'];
+        $user_password = $_POST['user_password'];
+        $post_date = ['d-m-y'];
 
         if (!empty($user_password)) {
             $query_password = "SELECT user_password FROM users WHERE user_id = $the_user_id";
@@ -35,10 +35,10 @@ if (isset($_GET['edit_user'])) {
 
             $row = mysqli_fetch_array($get_user_query);
 
-            $db_user_password = escape($row['user_password']);
+            $db_user_password = $row['user_password'];
 
             if ($db_user_password != $user_password) {
-                $hashed_password = escape(password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12)));
+                $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
             }
 
             $query = "UPDATE users SET ";
