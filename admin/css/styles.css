@@ -1,0 +1,34 @@
+#load-screen {
+    background: url(../images/._header-back.jpg);
+    position: fixed;
+    z-index: 10000;
+    top: 0px;
+    width: 100%;
+    height: 1600px;
+
+}
+
+
+#loading {
+
+    width: 200px;
+    height: 400px;
+    margin: 10% auto;
+    background: url(../images/._loader.gif);
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.pager li .active_link{
+    background-color: lightgray !important;
+}
+
+.side-height{
+    height: 100vh;
+}
+
+.side-height a{
+   color:white!important;
+}
